@@ -37,7 +37,7 @@ Feature: Organization_Locations in Admin Menu
       | name       |
       | NametoTest |
 
-  @high @locations @demo @now
+  @high @locations @demo @111
   Scenario: LO_06: Update an existing name for a Location
     When User clicks the Edit button for a name
     And User updates the data with updateText "<updateText>"

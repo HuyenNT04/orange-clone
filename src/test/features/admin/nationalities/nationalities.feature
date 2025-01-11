@@ -40,7 +40,7 @@ Feature: Nationalities in Admin Menu
       | name    |
       | Delete1 |
 
-  @medium
+  @medium @111
   Scenario: NA_05: Delete multi nationality
     When User selects multi nationality names are "<name1>" and "<name2>"
     And User clicks Delete button for Nationality

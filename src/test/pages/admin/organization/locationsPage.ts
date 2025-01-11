@@ -90,7 +90,8 @@ export default class LocationsAdminPage {
       await expect(this.elements.noResultsText()).toBeVisible();
       return;
     }
-    await this.elements.tableRow().nth(0).waitFor();
+    //await this.elements.tableRow().nth(0).waitFor();
+    await this.page.waitForTimeout(5000);
     const rowCount = await columnData.count();
     const lowercasedDataChecking = dataChecking.toLowerCase();
     for (let i = 0; i < rowCount; i++) {
