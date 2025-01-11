@@ -35,6 +35,7 @@ export default class LocationsAdminPage {
     noResultsToast: () => this.page.locator("div.oxd-toast--info"),
     noResultsText: () => this.page.locator('//span[text()="No Records Found"]'),
     tableBodyLocations: () => this.page.locator("div.oxd-table-body"),
+    tableRow: () => this.page.locator('//div[@class="oxd-table-card"]/div[@role="row"]'),
     nameColumnData: () => this.page.locator("div.oxd-table-card div.oxd-padding-cell:nth-child(2)"),
     cityColumnData: () => this.page.locator("div.oxd-table-card div.oxd-padding-cell:nth-child(3)"),
     contryColumnData: () => this.page.locator("div.oxd-table-card div.oxd-padding-cell:nth-child(4)"),
@@ -89,7 +90,7 @@ export default class LocationsAdminPage {
       await expect(this.elements.noResultsText()).toBeVisible();
       return;
     }
-    await this.elements.actionIcon().nth(0).waitFor();
+    await this.elements.tableRow().nth(0).waitFor();
     const rowCount = await columnData.count();
     const lowercasedDataChecking = dataChecking.toLowerCase();
     for (let i = 0; i < rowCount; i++) {
@@ -97,7 +98,7 @@ export default class LocationsAdminPage {
       if ((isOldDataDisplayed && valuesInColumn === lowercasedDataChecking) ||  //2 cases OR
        (!isOldDataDisplayed && !valuesInColumn.includes(lowercasedDataChecking)))
       { 
-        isValidValue = false;
+        isValidValue = false; //case fail
         break; 
       }
     }
